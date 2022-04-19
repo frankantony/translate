@@ -4,6 +4,7 @@ import { useSpeechSynthesis } from "react-speech-kit";
 
 const Convert = ({ text, language }) => {
 	const [convertedText, setConvertedText] = useState('');
+
 	const { speak } = useSpeechSynthesis();
 
 	const speech = (value) => {
@@ -12,7 +13,7 @@ const Convert = ({ text, language }) => {
 		    	Speech
 		    </button>
 		</div>
-	}	
+	}
 
 	useEffect(() => {
     const response = axios
@@ -36,10 +37,10 @@ const Convert = ({ text, language }) => {
 	 }, [text, language]);
 
 	console.log("converted: " + convertedText);
-	
   return (<div>
 		   <label>
-    	      <textarea value={convertedText} onChange={(event) => setConvertedText(event.target.value)} />
+    	      <textarea rows = "10" cols = "100" value={convertedText}
+						onChange={(event) => setConvertedText(event.target.value)} />
     	    </label>
 		  <div>
     	  <button onClick={() => speak({ text: convertedText })}>
